@@ -1,0 +1,21 @@
+.formControl {
+	height: 4em;
+	/* background-color: hotpink; */
+}
+label {
+	display: block;
+	margin-top: 2em;
+}
+input {
+	display: block;
+	padding-left: 0.5em;
+	/* border-bottom-width: 4px; */
+}
+.errorMessage { color: red; }
+
+.invalid {
+	border-bottom-color: red;
+}
+.valid {
+	border-bottom-color: green;
+}

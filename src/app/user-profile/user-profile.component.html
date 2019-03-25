@@ -1,0 +1,51 @@
+<div>
+<h1>Min kodprofil</h1>
+
+<div class="formControl">
+	<label>Avatar name</label>
+	<input type="text" placeholder="eg. DragonSlayer"
+		[formControl]="avatarNameControl"
+		[class.valid]="avatarNameControl.valid && (avatarNameControl.touched || avatarNameControl.dirty)"
+		[class.invalid]="avatarNameControl.invalid && (avatarNameControl.touched || avatarNameControl.dirty)"
+		/>
+	<div class="errorMessage" *ngIf="avatarNameControl.invalid && (avatarNameControl.touched || avatarNameControl.dirty)">
+		Du måste skriva in ett namn med minst 6 bokstäver.
+	</div>
+</div>
+
+<div class="formControl">
+	<label>Favourite language</label>
+	<input type="text" placeholder="eg. JavaScript"
+		[formControl]="favLanguageControl"
+		[class.invalid]="favLanguageControl.invalid && (favLanguageControl.touched || favLanguageControl.dirty)"
+		[class.valid]="favLanguageControl.valid && (favLanguageControl.touched || favLanguageControl.dirty)"
+		/>
+	<div class="errorMessage" *ngIf="(favLanguageControl.touched || favLanguageControl.dirty) && favLanguageControl.errors?.required">
+		Du måste fylla i ett språk!
+	</div>
+	<div class="errorMessage" *ngIf="(favLanguageControl.touched || favLanguageControl.dirty) && favLanguageControl.errors?.isKlingon">
+		Klingon är inte ett tillåtet språk!
+	</div>
+</div>
+
+<div *ngIf="avatarNameControl.valid">
+	{{ avatarNameControl.value }},
+	klicka för att skapa profil!
+</div>
+<button>Klicka här</button>
+<br />
+
+<p>
+	Avatar status:
+	touched={{avatarNameControl.touched}},
+	dirty={{avatarNameControl.dirty}},
+	pristine={{avatarNameControl.pristine}},
+	valid={{avatarNameControl.valid}},
+	invalid={{avatarNameControl.invalid}},
+</p>
+</div>
+
+
+
+
+<!--  -->
