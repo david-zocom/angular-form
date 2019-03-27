@@ -1,10 +1,23 @@
 <div>
 <h1>Min kodprofil</h1>
 
+<form [formGroup]="namesGroup">
+<div class="formControl">
+	<label>Real name</label>
+	<input type="text" placeholder="Glenn"
+		formControlName="realNameControl"
+		[class.valid]="realNameControl.valid && (realNameControl.touched || realNameControl.dirty)"
+		[class.invalid]="realNameControl.invalid && (realNameControl.touched || realNameControl.dirty)"
+		/>
+		<div class="errorMessage" *ngIf="realNameControl.errors?.required && (realNameControl.touched || realNameControl.dirty)">
+			Du måste skriva in ett namn!
+		</div>
+</div>
+
 <div class="formControl">
 	<label>Avatar name</label>
 	<input type="text" placeholder="eg. DragonSlayer"
-		[formControl]="avatarNameControl"
+		formControlName="avatarNameControl"
 		[class.valid]="avatarNameControl.valid && (avatarNameControl.touched || avatarNameControl.dirty)"
 		[class.invalid]="avatarNameControl.invalid && (avatarNameControl.touched || avatarNameControl.dirty)"
 		/>
@@ -12,6 +25,12 @@
 		Du måste skriva in ett namn med minst 6 bokstäver.
 	</div>
 </div>
+
+<div class="errorMessage"
+	*ngIf="namesGroup.errors?.sameName">
+	Du får inte ha samma namn på din avatar som du har i verkligheten!
+</div>
+</form>
 
 <div class="formControl">
 	<label>Favourite language</label>
